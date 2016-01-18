@@ -46,7 +46,13 @@ var get = exports.get = function(options, callback) {
     rl.close();
     rl = null;
   }
-
+  
+ /**
+  * Gets the default value in the case that the user just presses the enter key as input.
+  * @param {string} key - Users keystoke.
+  * @param {string} partial_answers - partial answer the user input.
+  * @return - returns the options available for the user to input.
+  */
   var get_default = function(key, partial_answers) {
     if (typeof options[key] == 'object')
       return typeof options[key].default == 'function' ? options[key].default(partial_answers) : options[key].default;
@@ -54,6 +60,11 @@ var get = exports.get = function(options, callback) {
       return options[key];
   }
 
+ /**
+  * Gets the type the user input such as true/false, yes/no, etc.
+  * @param {string} reply - The users response to the prompt.
+  * @return - the users input type.
+  */
   var guess_type = function(reply) {
 
     if (reply.trim() == '')
