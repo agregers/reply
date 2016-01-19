@@ -23,16 +23,18 @@ the function returns, and/or what type the variable is.
 
 
 ##### 3. Approximately how many hours did it take you to complete this assignment? #####
-> It took me approximately 6-8 hours to go through the prompt, read through / understand the npm module I would be working on (reply) and to finish commenting
+> It took me approximately 8 - 10 hours to go through the prompt, read through / understand the npm module I would be working on (reply) and to finish commenting
 and adding details that would be helpful for a user that may be using this module. I then spent another 1 1/2 hours on completing this write up. So overall I would
 say I spent 10+ hours on this assignment overall.
 
 
 ##### 4. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####
 > I did some research using Node.js documentation online @ https://nodejs.org/api to get a better grasp on what certain modules did (ex. readline)
-I also relied heavily on the website @ http://usejsdoc.org/about-getting-started.html to understand the formatting for commenting in js
+I also relied heavily on the website @ http://usejsdoc.org/about-getting-started.html to understand the formatting for commenting in js. I also
+got help from Joel on fixing an octale error that showed up when I tried installing jsdocs.
 
 
 ##### 5. Did you encounter any problems in this assignment we should warn students about in the future? How can we make the assignment better? #####
 > I wouldn't say that there is a specific problem with the assignment, but having more options under the list of modules that could be used for the assignment
-may make the assignment better and allow students more ideas of starting points. Otherwise, I thought the assignment was well laid out and well explained.
+may make the assignment better and allow students more ideas of starting points. I also had a difficult time fixing an octale error, but luckily Joel was available
+to show me a solution to get my jsdocs up and running. More explanation of jsdocs in the future would be helpful overall.
