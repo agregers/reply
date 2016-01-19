@@ -34,4 +34,5 @@ I also relied heavily on the website @ http://usejsdoc.org/about-getting-started
 
 
 ##### 5. Did you encounter any problems in this assignment we should warn students about in the future? How can we make the assignment better? #####
-> I didn't find any specific problems that I can think of to warn students about.
+> I wouldn't say that there is a specific problem with the assignment, but having more options under the list of modules that could be used for the assignment
+may make the assignment better and allow students more ideas of starting points. Otherwise, I thought the assignment was well laid out and well explained.
