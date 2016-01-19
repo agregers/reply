@@ -23,12 +23,15 @@ the function returns, and/or what type the variable is.
 
 
 ##### 3. Approximately how many hours did it take you to complete this assignment? #####
-> Answer goes here!
+> It took me approximately 6-8 hours to go through the prompt, read through / understand the npm module I would be working on (reply) and to finish commenting
+and adding details that would be helpful for a user that may be using this module. I then spent another 1 1/2 hours on completing this write up. So overall I would
+say I spent 10+ hours on this assignment overall.
 
 
 ##### 4. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####
-> Answer goes here!
+> I did some research using Node.js documentation online @ https://nodejs.org/api to get a better grasp on what certain modules did (ex. readline)
+I also relied heavily on the website @ http://usejsdoc.org/about-getting-started.html to understand the formatting for commenting in js
 
 
 ##### 5. Did you encounter any problems in this assignment we should warn students about in the future? How can we make the assignment better? #####
-> Answer goes here!
+> I didn't find any specific problems that I can think of to warn students about.
