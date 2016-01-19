@@ -1,13 +1,28 @@
-var rl, readline = require('readline');
+var rl, readline = require('readline'); //module for reading a stream on a line-by-line basis
 
+ /**
+  * Creates an interface using the readline module for input and output stream
+  * @param stdin - input stream
+  * @param stdout - output stream
+  * @return - returns readline interface
+  */
 var get_interface = function(stdin, stdout) {
   if (!rl) rl = readline.createInterface(stdin, stdout);
   else stdin.resume(); // interface exists
   return rl;
 }
 
+ /**
+  * Confirms that user has entered input that was previously prompted by user.
+  * @param message - message to be used to prompt the user for input.
+  * @param callback - confirmation that user has entered input.
+  */
 var confirm = exports.confirm = function(message, callback) {
-
+  
+  /**
+  * Get the question to be asked to the user and their response
+  * @constructs question for prompting user
+  */
   var question = {
     'reply': {
       type: 'confirm',
@@ -23,6 +38,11 @@ var confirm = exports.confirm = function(message, callback) {
 
 };
 
+ /**
+  * Gets the possible options for prompting the user and what type they should respond with.
+  * @param options - possible options for prompting and receiving user input by type.
+  * @param callback - confirmation that user has entered input.
+  */
 var get = exports.get = function(options, callback) {
 
   if (!callback) return; // no point in continuing
@@ -34,12 +54,16 @@ var get = exports.get = function(options, callback) {
       stdin = process.stdin,
       stdout = process.stdout,
       fields = Object.keys(options);
-
+  /**
+  * Closes the prompt and does something with the users answers
+  */
   var done = function() {
     close_prompt();
     callback(null, answers);
   }
-
+  /**
+  * Closes out the readline interface, relingquishing control of input/output streams
+  */
   var close_prompt = function() {
     stdin.pause();
     if (!rl) return;
@@ -49,8 +73,8 @@ var get = exports.get = function(options, callback) {
   
  /**
   * Gets the default value in the case that the user just presses the enter key as input.
-  * @param {string} key - Users keystoke.
-  * @param {string} partial_answers - partial answer the user input.
+  * @param key - Users keystoke.
+  * @param partial_answers - partial answer the user input.
   * @return - returns the options available for the user to input.
   */
   var get_default = function(key, partial_answers) {
@@ -62,7 +86,7 @@ var get = exports.get = function(options, callback) {
 
  /**
   * Gets the type the user input such as true/false, yes/no, etc.
-  * @param {string} reply - The users response to the prompt.
+  * @param reply - The users response to the prompt.
   * @return - the users input type.
   */
   var guess_type = function(reply) {
@@ -78,7 +102,12 @@ var get = exports.get = function(options, callback) {
 
     return reply;
   }
-
+  /**
+  * Validates that the type that the user enters is the type required
+  * @param key - Users keystoke.
+  * @param answer - answer the user input.
+  * @returns whether the type entered by the user is a valid option for them to enter
+  */
   var validate = function(key, answer) {
 
     if (typeof answer == 'undefined')
@@ -95,7 +124,11 @@ var get = exports.get = function(options, callback) {
     return true;
 
   }
-
+  
+  /**
+  * Outputs error message and explains valid options the user has for input
+  * @param key - Users input
+  */
   var show_error = function(key) {
     var str = options[key].error ? options[key].error : 'Invalid value.';
 
@@ -104,7 +137,10 @@ var get = exports.get = function(options, callback) {
 
     stdout.write("\033[31m" + str + "\033[0m" + "\n");
   }
-
+  /**
+  * Outputs message and explains valid options the user has for input
+  * @param key - Users input
+  */
   var show_message = function(key) {
     var msg = '';
 
@@ -149,7 +185,13 @@ var get = exports.get = function(options, callback) {
 
     stdin.on('keypress', keypress_callback);
   }
-
+  /**
+  * Checks whether the reply given by the user is valid in type and if not, shows error message
+  * @param index - keeps track of current question and next question
+  * @param curr_key - keeps track of most recent user input entered
+  * @param fallback - default when answer returned is undefined
+  * @param reply - users response to prompt
+  */
   var check_reply = function(index, curr_key, fallback, reply) {
     var answer = guess_type(reply);
     var return_answer = (typeof answer != 'undefined') ? answer : fallback;
@@ -159,7 +201,12 @@ var get = exports.get = function(options, callback) {
     else
       show_error(curr_key) || next_question(index); // repeats current
   }
-
+ 
+  /**
+  * Checks whether dependencies required are currently met
+  * @param conds - the condition that needs to be met for dependency requirement
+  * @returns true if the dependencies are met, false otherwise
+  */
   var dependencies_met = function(conds) {
     for (var key in conds) {
       var cond = conds[key];
@@ -174,10 +221,17 @@ var get = exports.get = function(options, callback) {
           return false; 
       }
     }
-
+    
     return true;
   }
 
+  /**
+  * Keeps track of the next question following the current question
+  * @param index - keeps track of current question and next question
+  * @param prev_key - keeps track of user input entered for the previous question
+  * @param answer - the user input for the current question
+  * @returns the next question and the current answer, if no current answer, calls done
+  */
   var next_question = function(index, prev_key, answer) {
     if (prev_key) answers[prev_key] = answer;
 
